@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora Québec</title>
+</head>
+<body>
+    <h1>Calculadora Comprar vs Rentar</h1>
+
+    <label>Renta mensual ($):</label><br>
+    <input type="number" id="renta"><br><br>
+
+    <label>Precio de la casa ($):</label><br>
+    <input type="number" id="precio"><br><br>
+
+    <button onclick="calcular()">Calcular</button>
+
+    <h2 id="resultado"></h2>
+
+    <script>
+        function calcular() {
+            let renta = document.getElementById("renta").value;
+            let precio = document.getElementById("precio").value;
+
+            let hipoteca = precio * 0.005; // cálculo simple
+
+            document.getElementById("resultado").innerText =
+                "Pago estimado: $" + hipoteca.toFixed(0) +
+                " vs renta: $" + renta;
+        }
+    </script>
+</body>
+</html>
