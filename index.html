@@ -11,7 +11,8 @@
 
     <label>Precio de la casa ($):</label><br>
     <input type="number" id="precio"><br><br>
-
+<label>Tasa de interés anual (%):</label><br>
+<input type="number" id="interes"><br><br>
     <button onclick="calcular()">Calcular</button>
 
     <h2 id="resultado"></h2>
@@ -21,11 +22,14 @@
             let renta = document.getElementById("renta").value;
             let precio = document.getElementById("precio").value;
 
-            let hipoteca = precio * 0.005; // cálculo simple
+            let interes = document.getElementById("interes").value / 100 / 12;
+let meses = 25 * 12;
+
+            let hipoteca = (precio * interes) / (1 - Math.pow(1 + interes, -meses));
 
             document.getElementById("resultado").innerText =
-                "Pago estimado: $" + hipoteca.toFixed(0) +
-                " vs renta: $" + renta;
+                "Pago mensual estimado: $" + hipoteca.toFixed(0) +
+               " | Renta: $" + renta; 
         }
     </script>
 </body>
