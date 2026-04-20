@@ -28,8 +28,9 @@ let meses = 25 * 12;
             let hipoteca = (precio * interes) / (1 - Math.pow(1 + interes, -meses));
 
             document.getElementById("resultado").innerText =
-                "Pago mensual estimado: $" + hipoteca.toFixed(0) +
-               " | Renta: $" + renta; 
+                "Pago hipoteca: $" + hipoteca.toFixed(0) +
+                " / Renta: $" + renta +
+              (hipoteca > renta ? " → Comprar es más caro" : " → Comprar podría convenir");  
         }
     </script>
 </body>
