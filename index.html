@@ -62,10 +62,23 @@
     let interesInput = document.getElementById("interes").value;
 
     // Validación
-    if (!renta || !precio || !interesInput) {
+    if (renta === "" || precio === "" || interesInput === "") {
         document.getElementById("resultado").innerText = "Por favor completa todos los campos";
         return;
     }
+
+    let rentaNum = parseFloat(renta);
+    let precioNum = parseFloat(precio);
+    let interes = parseFloat(interesInput) / 100 / 12;
+    let meses = 25 * 12;
+
+    let hipoteca = (precioNum * interes) / (1 - Math.pow(1 + interes, -meses));
+
+    document.getElementById("resultado").innerText =
+        "Pago hipoteca: $" + hipoteca.toFixed(0) +
+        " / Renta: $" + rentaNum +
+        (hipoteca > rentaNum ? " → Comprar es más caro" : " → Comprar podría convenir");
+}
 
     let interes = parseFloat(interesInput) / 100 / 12;
 let precioNum = parseFloat(precio);
