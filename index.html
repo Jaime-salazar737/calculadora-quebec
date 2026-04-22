@@ -58,9 +58,18 @@
     <script>
         function calcular() {
             let renta = document.getElementById("renta").value;
+let precio = document.getElementById("precio").value;
+let interesInput = document.getElementById("interes").value;
+
+// Validación
+if (!renta || !precio || !interesInput) {
+    document.getElementById("resultado").innerText = "Por favor completa todos los campos";
+    return;
+}
+           
             let precio = document.getElementById("precio").value;
 
-            let interes = document.getElementById("interes").value / 100 / 12;
+            let interes = interesInput / 100 / 12;
 let meses = 25 * 12;
 
             let hipoteca = (precio * interes) / (1 - Math.pow(1 + interes, -meses));
