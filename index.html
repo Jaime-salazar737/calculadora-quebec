@@ -56,7 +56,7 @@
     <h2 id="resultado"></h2>
 
     <script>
-   function calcular() {
+  function calcular() {
     let renta = document.getElementById("renta").value;
     let precio = document.getElementById("precio").value;
     let interesInput = document.getElementById("interes").value;
@@ -79,32 +79,7 @@
         " / Renta: $" + rentaNum +
         (hipoteca > rentaNum ? " → Comprar es más caro" : " → Comprar podría convenir");
 }
-
-    let interes = parseFloat(interesInput) / 100 / 12;
-let precioNum = parseFloat(precio);
-let rentaNum = parseFloat(renta);
-    let meses = 25 * 12;
-
-    let hipoteca = (precio * interes) / (1 - Math.pow(1 + interes, -meses));
-
-    document.getElementById("resultado").innerText =
-        "Pago hipoteca: $" + hipoteca.toFixed(0) +
-        " / Renta: $" + renta +
-        (hipoteca > renta ? " → Comprar es más caro" : " → Comprar podría convenir");
-}    
-           
-            let precio = document.getElementById("precio").value;
-
-            let interes = interesInput / 100 / 12;
-let meses = 25 * 12;
-
-           let hipoteca = (precioNum * interes) / (1 - Math.pow(1 + interes, -meses)); 
-
-            document.getElementById("resultado").innerText =
-                "Pago hipoteca: $" + hipoteca.toFixed(0) +
-                " / Renta: $" + rentaNum
-              (hipoteca > renta ? " → Comprar es más caro" : " → Comprar podría convenir");  
-        }
+      
     </script>
 </body>
 </html>
