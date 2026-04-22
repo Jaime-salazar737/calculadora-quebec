@@ -67,7 +67,9 @@
         return;
     }
 
-    let interes = interesInput / 100 / 12;
+    let interes = parseFloat(interesInput) / 100 / 12;
+let precioNum = parseFloat(precio);
+let rentaNum = parseFloat(renta);
     let meses = 25 * 12;
 
     let hipoteca = (precio * interes) / (1 - Math.pow(1 + interes, -meses));
@@ -83,11 +85,11 @@
             let interes = interesInput / 100 / 12;
 let meses = 25 * 12;
 
-            let hipoteca = (precio * interes) / (1 - Math.pow(1 + interes, -meses));
+           let hipoteca = (precioNum * interes) / (1 - Math.pow(1 + interes, -meses)); 
 
             document.getElementById("resultado").innerText =
                 "Pago hipoteca: $" + hipoteca.toFixed(0) +
-                " / Renta: $" + renta +
+                " / Renta: $" + rentaNum
               (hipoteca > renta ? " → Comprar es más caro" : " → Comprar podría convenir");  
         }
     </script>
