@@ -65,9 +65,7 @@
     if (renta === "" || precio === "" || interesInput === "") {
         document.getElementById("resultado").innerText = "Por favor completa todos los campos";
         return;
-        document.getElementById("renta").value = "";
-document.getElementById("precio").value = "";
-document.getElementById("interes").value = "";
+      
     }
 
     let rentaNum = parseFloat(renta);
@@ -80,7 +78,10 @@ document.getElementById("interes").value = "";
     document.getElementById("resultado").innerText =
    "Pago mensual estimado: $" + hipoteca.toFixed(0) + "\n" +
 "Renta: $" + rentaNum + "\n" +
-(hipoteca > rentaNum ? "Comprar es más caro" : "Comprar podría convenir");    
+(hipoteca > rentaNum ? "Comprar es más caro" : "Comprar podría convenir");
+       document.getElementById("renta").value = "";
+document.getElementById("precio").value = "";
+document.getElementById("interes").value = "";
 }
       
     </script>
