@@ -75,9 +75,9 @@
 
     let hipoteca = (precioNum * interes) / (1 - Math.pow(1 + interes, -meses));
 
-    document.getElementById("resultado").innerText =
-   "Pago mensual estimado: $" + hipoteca.toFixed(0) + "\n" +
-"Renta: $" + rentaNum + "\n" +
+    document.getElementById("resultado").innerHTML =
+  "Pago mensual estimado: $" + hipoteca.toFixed(0) + "<br>" +
+"Renta: $" + rentaNum + "<br>" +
 (hipoteca > rentaNum ? "Comprar es más caro" : "Comprar podría convenir");
        document.getElementById("renta").value = "";
 document.getElementById("precio").value = "";
