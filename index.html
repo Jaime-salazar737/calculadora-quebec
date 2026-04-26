@@ -72,7 +72,7 @@
 
     // Validación
     if (renta === "" || precio === "" || interesInput === "") {
-        document.getElementById("resultado").innerText = "Por favor completa todos los campos";
+     document.getElementById("resultado").style.color = hipoteca > rentaNum ? "red" : "green";  
         return;
       
     }
@@ -87,7 +87,7 @@
     document.getElementById("resultado").innerHTML =
   "Pago mensual estimado: $" + hipoteca.toFixed(0) + "<br>" +
 "Renta: $" + rentaNum + "<br>" +
-(hipoteca > rentaNum ? "Comprar es más caro" : "Comprar podría convenir");
+(hipoteca > rentaNum ? "❌ Comprar es más caro que rentar en este escenario" : "✅ Comprar podría ser mejor opción que rentar");
        document.getElementById("renta").value = "";
 document.getElementById("precio").value = "";
 document.getElementById("interes").value = "";
