@@ -60,6 +60,7 @@
     <input type="number" id="precio"><br><br>
 <label>Tasa de interés anual (%):</label><br>
 <input type="number" id="interes"><br><br>
+ <input type="number" id="enganche" placeholder="% Enganche (ej: 20)">   
     <button onclick="calcular()">Calcular</button>
 
     <h2 id="resultado"></h2>
@@ -69,9 +70,10 @@
     let renta = document.getElementById("renta").value;
     let precio = document.getElementById("precio").value;
     let interesInput = document.getElementById("interes").value;
+     let engancheInput = document.getElementById("enganche").value; 
 
     // Validación
-    if (renta === "" || precio === "" || interesInput === "") {
+    if (renta === "" || precio === "" || interesInput === "" || engancheInput === "") {
      document.getElementById("resultado").innerText = "⚠️ Por favor completa todos los campos antes de calcular";  
         return;
       
@@ -81,11 +83,14 @@
     let precioNum = parseFloat(precio);
     let interes = parseFloat(interesInput) / 100 / 12;
     let meses = 25 * 12;
+    let enganche = parseFloat(engancheInput) / 100;
 
-    let hipoteca = (precioNum * interes) / (1 - Math.pow(1 + interes, -meses));
+   let montoPrestamo = precioNum * (1 - enganche);
+   let hipoteca = (montoPrestamo * interes) / (1 - Math.pow(1 + interes, -meses));
 
     document.getElementById("resultado").innerHTML =
   "Pago mensual estimado: $" + hipoteca.toFixed(0) + "<br>" +
+    "Enganche: " + (enganche * 100) + "%<br>" +    
 "Renta: $" + rentaNum + "<br>" +
 (hipoteca > rentaNum ? "❌ Comprar es más caro que rentar en este escenario" : "✅ Comprar podría ser mejor opción que rentar");
        document.getElementById("renta").value = "";
