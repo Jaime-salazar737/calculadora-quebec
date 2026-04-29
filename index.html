@@ -50,7 +50,8 @@
             margin-top: 20px;
             font-size: 18px;
             font-weight: bold;
-            line-height: 1.5;
+            line-height: 1.6;
+            text-align: left;
         }
     </style>
 </head>
@@ -94,10 +95,13 @@
    let hipoteca = (montoPrestamo * interes) / (1 - Math.pow(1 + interes, -meses));
 
     document.getElementById("resultado").innerHTML =
-  "Pago mensual estimado: $" + hipoteca.toFixed(0) + "<br>" +
-    "Enganche: " + (enganche * 100) + "%<br>" +    
-"Renta: $" + rentaNum + "<br>" +
-(hipoteca > rentaNum ? "❌ Comprar es más caro que rentar en este escenario" : "✅ Comprar podría ser mejor opción que rentar");
+   "<strong>Resultado:</strong><br><br>" +
+    "💰 Pago mensual estimado: $" + hipoteca.toFixed(0) + "<br>" +
+    "🏠 Renta actual: $" + rentaNum + "<br>" +
+    "📊 Enganche: " + (enganche * 100) + "%<br><br>" +
+    (hipoteca > rentaNum 
+        ? "❌ En este caso, comprar es más caro que rentar"
+        : "✅ En este caso, comprar podría ser mejor que rentar");
        document.getElementById("renta").value = "";
 document.getElementById("precio").value = "";
 document.getElementById("interes").value = "";
