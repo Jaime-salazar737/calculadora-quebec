@@ -68,14 +68,14 @@
     <p>Esta herramienta te ayuda a comparar si te conviene más comprar una propiedad o seguir rentando, según tu situación.</p>
     
     <label>Renta mensual ($):</label><br>
-    <input type="number" id="renta"><br><br>
+    <input type="number" id="renta" placeholder="Renta mensual (ej: 1200)" min="0">
 
     <label>Precio de la casa ($):</label><br>
-    <input type="number" id="precio"><br><br>
+    <input type="number" id="precio" placeholder="Precio de la propiedad (ej: 300000)" min="0">
 <label>Tasa de interés anual (%):</label><br>
-<input type="number" id="interes"><br><br>
- <input type="number" id="enganche" placeholder="% Enganche (ej: 20)">   
-    <button onclick="calcular()">Calcular</button>
+<input type="number" id="interes" placeholder="Tasa de interés anual % (ej: 5)" min="0">
+ <input type="number" id="enganche" placeholder="% Enganche (ej: 20)" min="0">   
+    <button onclick="calcular()">Comparar</button>
 
     <h2 id="resultado"></h2>
 
