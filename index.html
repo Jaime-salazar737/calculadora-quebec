@@ -66,18 +66,18 @@
 </head>
 <body>
 <div class="container">    
-    <h1>Comparador: Comprar vs Rentar en Québec</h1>
-    <p>Esta herramienta te ayuda a comparar si te conviene más comprar una propiedad o seguir rentando, según tu situación.</p>
+    <h1>Comparateur: Acheter ou louer au Québec</h1>
+    <p>Cet outil vous aide à comparer s’il est plus avantageux d’acheter une propriété ou de continuer à louer, selon votre situation.</p>
     
-    <label>Renta mensual ($):</label><br>
+    <label>Loyer mensuel ($):</label><br>
     <input type="number" id="renta" placeholder="Renta mensual (ej: 1200)" min="0">
 
-    <label>Precio de la casa ($):</label><br>
-    <input type="number" id="precio" placeholder="Precio de la propiedad (ej: 300000)" min="0">
-<label>Tasa de interés anual (%):</label><br>
-<input type="number" id="interes" placeholder="Tasa de interés anual % (ej: 5)" min="0">
- <input type="number" id="enganche" placeholder="% Enganche (ej: 20)" min="0">   
-    <button onclick="calcular()">Comparar</button>
+    <label>Prix de la propriété ($):</label><br>
+    <input type="number" id="precio" placeholder="Prix de la propriété (ej: 300000)" min="0">
+<label>Taux d'intérêt annuel (%):</label><br>
+<input type="number" id="interes" placeholder="Taux d'intérêt annuel % (ej: 5)" min="0">
+ <input type="number" id="enganche" placeholder="% Mise de fonds (ej: 20)" min="0">   
+    <button onclick="calcular()">Comparer</button>
 
     <div id="resultado"></div>
 
@@ -90,7 +90,7 @@
 
     // Validación
     if (renta === "" || precio === "" || interesInput === "" || engancheInput === "") {
-     document.getElementById("resultado").innerText = "⚠️ Por favor completa todos los campos antes de calcular";  
+     document.getElementById("resultado").innerText = "⚠️ Veuillez remplir tous les champs avant de comparer";  
         return;
       
     }
@@ -105,13 +105,13 @@
    let hipoteca = (montoPrestamo * interes) / (1 - Math.pow(1 + interes, -meses));
 
     document.getElementById("resultado").innerHTML =
-   "<strong>Resultado:</strong><br><br>" +
-    "💰 Pago mensual estimado: $" + hipoteca.toFixed(0) + "<br>" +
-    "🏠 Renta actual: $" + rentaNum + "<br>" +
-    "📊 Enganche: " + (enganche * 100) + "%<br><br>" +
+   "<strong>Résultat:</strong><br><br>" +
+    "💰 Paiment mensuel estimé: $" + hipoteca.toFixed(0) + "<br>" +
+    "🏠 Loyer actuel: $" + rentaNum + "<br>" +
+    "📊 Mise de fonds: " + (enganche * 100) + "%<br><br>" +
     (hipoteca > rentaNum 
-        ? "❌ En este escenario, comprar no parece la mejor opción frente a rentar"
-        : "✅ En este escenario, comprar podría ser una mejor decisión que rentar");
+        ? "❌ Dans ce scénario, acheter n’est pas plus avantageux que louer"
+        : "✅  Dans ce scénario, acheter pourrait être une meilleure option que louer");
        document.getElementById("renta").value = "";
 document.getElementById("precio").value = "";
 document.getElementById("interes").value = "";
