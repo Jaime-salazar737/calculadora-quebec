@@ -70,7 +70,7 @@
     <p>Cet outil vous aide à comparer s’il est plus avantageux d’acheter une propriété ou de continuer à louer, selon votre situation.</p>
     
     <label>Loyer mensuel ($):</label><br>
-    <input type="number" id="renta" placeholder="Renta mensual (ej: 1200)" min="0">
+    <input type="number" id="renta" placeholder="Loyer mensuel (ej: 1200)" min="0">
 
     <label>Prix de la propriété ($):</label><br>
     <input type="number" id="precio" placeholder="Prix de la propriété (ej: 300000)" min="0">
@@ -106,7 +106,7 @@
 
     document.getElementById("resultado").innerHTML =
    "<strong>Résultat:</strong><br><br>" +
-    "💰 Paiment mensuel estimé: $" + hipoteca.toFixed(0) + "<br>" +
+    "💰 Paiment (hypothèque) mensuel estimé: $" + hipoteca.toFixed(0) + "<br>" +
     "🏠 Loyer actuel: $" + rentaNum + "<br>" +
     "📊 Mise de fonds: " + (enganche * 100) + "%<br><br>" +
     (hipoteca > rentaNum 
