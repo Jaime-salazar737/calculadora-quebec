@@ -55,8 +55,10 @@
 
         #resultado {
             margin-top: 20px;
-            font-size: 18px;
-            font-weight: bold;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #f0f4f8;
+            font-size: 16px;
             line-height: 1.6;
             text-align: left;
         }
@@ -77,7 +79,7 @@
  <input type="number" id="enganche" placeholder="% Enganche (ej: 20)" min="0">   
     <button onclick="calcular()">Comparar</button>
 
-    <h2 id="resultado"></h2>
+    <div id="resultado"></div>
 
     <script>
   function calcular() {
@@ -108,8 +110,8 @@
     "🏠 Renta actual: $" + rentaNum + "<br>" +
     "📊 Enganche: " + (enganche * 100) + "%<br><br>" +
     (hipoteca > rentaNum 
-        ? "❌ En este caso, comprar es más caro que rentar"
-        : "✅ En este caso, comprar podría ser mejor que rentar");
+        ? "❌ En este escenario, comprar no parece la mejor opción frente a rentar"
+        : "✅ En este escenario, comprar podría ser una mejor decisión que rentar");
        document.getElementById("renta").value = "";
 document.getElementById("precio").value = "";
 document.getElementById("interes").value = "";
