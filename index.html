@@ -66,7 +66,9 @@
 </head>
 <body>
 <div class="container">    
-    <h1>Comparateur: Acheter ou louer au Québec</h1>
+    <h1>Comparateur : Acheter ou louer au Québec</h1>
+    <button onclick="setIdioma('fr')">FR</button>
+    <button onclick="setIdioma('es')">ES</button>
     <p>Cet outil vous aide à comparer s’il est plus avantageux d’acheter une propriété ou de continuer à louer, selon votre situation.</p>
     
     <label>Loyer mensuel ($):</label><br>
@@ -82,6 +84,38 @@
     <div id="resultado"></div>
 
     <script>
+    let idioma = "fr";
+        
+     function setIdioma(lang) {
+    idioma = lang;
+    actualizarTextos();
+} 
+  function actualizarTextos() {
+
+    if (idioma === "fr") {
+        document.querySelector("h1").innerText = "Comparateur : Acheter ou Louer au Québec";
+        document.querySelector("p").innerText = "Cet outil vous aide à comparer s’il est plus avantageux d’acheter une propriété ou de continuer à louer.";
+
+        document.getElementById("renta").placeholder = "Loyer mensuel (ex: 1200)";
+        document.getElementById("precio").placeholder = "Prix de la propriété (ex: 300000)";
+        document.getElementById("interes").placeholder = "Taux d’intérêt annuel % (ex: 5)";
+        document.getElementById("enganche").placeholder = "Mise de fonds % (ex: 20)";
+
+        document.querySelector("button[onclick='calcular()']").innerText = "Comparer";
+
+    } else {
+
+        document.querySelector("h1").innerText = "Comparador: Comprar vs Rentar en Québec";
+        document.querySelector("p").innerText = "Esta herramienta te ayuda a comparar si te conviene más comprar una propiedad o seguir rentando.";
+
+        document.getElementById("renta").placeholder = "Renta mensual (ej: 1200)";
+        document.getElementById("precio").placeholder = "Precio de la propiedad (ej: 300000)";
+        document.getElementById("interes").placeholder = "Tasa de interés anual % (ej: 5)";
+        document.getElementById("enganche").placeholder = "Enganche % (ej: 20)";
+
+        document.querySelector("button[onclick='calcular()']").innerText = "Comparar";
+    }
+}      
   function calcular() {
     let renta = document.getElementById("renta").value;
     let precio = document.getElementById("precio").value;
@@ -90,7 +124,10 @@
 
     // Validación
     if (renta === "" || precio === "" || interesInput === "" || engancheInput === "") {
-     document.getElementById("resultado").innerText = "⚠️ Veuillez remplir tous les champs avant de comparer";  
+      document.getElementById("resultado").innerText =
+    idioma === "fr"
+    ? "⚠️ Veuillez remplir tous les champs avant de comparer"
+    : "⚠️ Por favor completa todos los campos antes de comparar"; 
         return;
       
     }
@@ -117,7 +154,7 @@ document.getElementById("precio").value = "";
 document.getElementById("interes").value = "";
 document.getElementById("enganche").value = "";    
 }
-      
+   actualizarTextos();   
     </script>
     </div>
 </body>
