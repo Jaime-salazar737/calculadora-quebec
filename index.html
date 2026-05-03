@@ -141,12 +141,38 @@
    let montoPrestamo = precioNum * (1 - enganche);
    let hipoteca = (montoPrestamo * interes) / (1 - Math.pow(1 + interes, -meses));
 
-    document.getElementById("resultado").innerHTML =
-   "<strong>Résultat:</strong><br><br>" +
-    "💰 Paiment (hypothèque) mensuel estimé: $" + hipoteca.toFixed(0) + "<br>" +
-    "🏠 Loyer actuel: $" + rentaNum + "<br>" +
-    "📊 Mise de fonds: " + (enganche * 100) + "%<br><br>" +
-    (hipoteca > rentaNum 
+     let titulo = idioma === "fr" ? "Résultat :" : "Resultado:";
+
+let pago = idioma === "fr" 
+    ? "💰 Paiement mensuel estimé : $" 
+    : "💰 Pago mensual estimado: $";
+
+let rentaTexto = idioma === "fr"
+    ? "🏠 Loyer actuel : $"
+    : "🏠 Renta actual: $";
+
+let engancheTexto = idioma === "fr"
+    ? "📊 Mise de fonds : "
+    : "📊 Enganche: ";
+
+let mensaje;
+
+if (hipoteca > rentaNum) {
+    mensaje = idioma === "fr"
+        ? "❌ Dans ce scénario, acheter n’est pas plus avantageux que louer"
+        : "❌ En este escenario, comprar no es mejor que rentar";
+} else {
+    mensaje = idioma === "fr"
+        ? "✅ Dans ce scénario, acheter pourrait être une meilleure option"
+        : "✅ En este escenario, comprar podría ser mejor opción";
+}
+
+document.getElementById("resultado").innerHTML =
+    "<strong>" + titulo + "</strong><br><br>" +
+    pago + hipoteca.toFixed(0) + "<br>" +
+    rentaTexto + rentaNum + "<br>" +
+    engancheTexto + (enganche * 100) + "%<br><br>" +
+    mensaje;
         ? "❌ Dans ce scénario, acheter n’est pas plus avantageux que louer"
         : "✅  Dans ce scénario, acheter pourrait être une meilleure option que louer");
        document.getElementById("renta").value = "";
