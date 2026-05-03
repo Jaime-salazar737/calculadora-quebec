@@ -78,7 +78,9 @@
     <input type="number" id="precio" placeholder="Prix de la propriété (ej: 300000)" min="0">
 <label>Taux d'intérêt annuel (%):</label><br>
 <input type="number" id="interes" placeholder="Taux d'intérêt annuel % (ej: 5)" min="0">
- <input type="number" id="enganche" placeholder="% Mise de fonds (ej: 20)" min="0">   
+ <input type="number" id="enganche" placeholder="% Mise de fonds (ej: 20)" min="0"> 
+<input type="number" id="taxeMunicipale" placeholder="Taxe municipale annuelle ($ ex: 2500)" min="0">
+<input type="number" id="taxeScolaire" placeholder="Taxe scolaire annuelle ($ ex: 300)" min="0">
     <button onclick="calcular()">Comparer</button>
 
     <div id="resultado"></div>
@@ -120,7 +122,9 @@
     let renta = document.getElementById("renta").value;
     let precio = document.getElementById("precio").value;
     let interesInput = document.getElementById("interes").value;
-     let engancheInput = document.getElementById("enganche").value; 
+     let engancheInput = document.getElementById("enganche").value;
+    let taxeMunicipaleInput = document.getElementById("taxeMunicipale").value;
+    let taxeScolaireInput = document.getElementById("taxeScolaire").value;
 
     // Validación
     if (renta === "" || precio === "" || interesInput === "" || engancheInput === "") {
@@ -137,9 +141,18 @@
     let interes = parseFloat(interesInput) / 100 / 12;
     let meses = 25 * 12;
     let enganche = parseFloat(engancheInput) / 100;
+      let taxeMunicipaleInput = document.getElementById("taxeMunicipale").value;
+let taxeScolaireInput = document.getElementById("taxeScolaire").value;
+
+let taxeMunicipale = taxeMunicipaleInput === "" ? 0 : parseFloat(taxeMunicipaleInput);
+let taxeScolaire = taxeScolaireInput === "" ? 0 : parseFloat(taxeScolaireInput);
+
+let taxesAnuales = taxeMunicipale + taxeScolaire;
+let taxesMensuales = taxesAnuales / 12;
 
    let montoPrestamo = precioNum * (1 - enganche);
    let hipoteca = (montoPrestamo * interes) / (1 - Math.pow(1 + interes, -meses));
+      let costoTotalMensual = hipoteca + taxesMensuales;
 
      let titulo = idioma === "fr" ? "Résultat :" : "Resultado:";
 
@@ -172,7 +185,9 @@ document.getElementById("resultado").innerHTML =
     pago + hipoteca.toFixed(0) + "<br>" +
     rentaTexto + rentaNum + "<br>" +
     engancheTexto + (enganche * 100) + "%<br><br>" +
-    mensaje;
+    "<br>🏛️ " + (idioma === "fr" ? "Taxes mensuelles : $" : "Impuestos mensuales: $") + taxesMensuales.toFixed(0) +
+    "<br><strong>" + (idioma === "fr" ? "Coût total mensuel : $" : "Costo total mensual: $") + costoTotalMensual.toFixed(0) + "</strong>"
+    + mensaje;
     
        document.getElementById("renta").value = "";
 document.getElementById("precio").value = "";
