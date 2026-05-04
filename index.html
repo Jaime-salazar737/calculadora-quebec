@@ -192,10 +192,12 @@ document.getElementById("resultado").innerHTML =
     "<br><strong>" + (idioma === "fr" ? "Coût total mensuel : $" : "Costo total mensual: $") + costoTotalMensual.toFixed(0) + "</strong>"
     + mensaje;
     
-       document.getElementById("renta").value = "";
+document.getElementById("renta").value = "";
 document.getElementById("precio").value = "";
 document.getElementById("interes").value = "";
-document.getElementById("enganche").value = "";    
+document.getElementById("enganche").value = "";
+document.getElementById("taxeMunicipale").value = "";
+document.getElementById("taxeScolaire").value = "";
 }
    actualizarTextos();   
     </script>
