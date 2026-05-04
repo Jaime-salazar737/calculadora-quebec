@@ -81,6 +81,7 @@
  <input type="number" id="enganche" placeholder="% Mise de fonds (ej: 20)" min="0"> 
 <input type="number" id="taxeMunicipale" placeholder="Taxe municipale annuelle ($ ex: 2500)" min="0">
 <input type="number" id="taxeScolaire" placeholder="Taxe scolaire annuelle ($ ex: 300)" min="0">
+ <input type="number" id="gastosComunes" placeholder="Frais de copropriété mensuels ($ ex: 250)" min="0">   
     <button onclick="calcular()">Comparer</button>
 
     <div id="resultado"></div>
@@ -104,6 +105,7 @@
         document.getElementById("enganche").placeholder = "Mise de fonds % (ex: 20)";
         document.getElementById("taxeMunicipale").placeholder = "Taxe municipale annuelle ($ ex: 2500)";
         document.getElementById("taxeScolaire").placeholder = "Taxe scolaire annuelle ($ ex: 300)";
+        document.getElementById("gastosComunes").placeholder = "Frais de copropriété mensuels ($ ex: 250)";
 
         document.querySelector("button[onclick='calcular()']").innerText = "Comparer";
 
@@ -118,6 +120,7 @@
         document.getElementById("enganche").placeholder = "Enganche % (ej: 20)";
         document.getElementById("taxeMunicipale").placeholder = "Impuesto municipal anual ($ ej: 2500)";
         document.getElementById("taxeScolaire").placeholder = "Impuesto escolar anual ($ ej: 300)";
+        document.getElementById("gastosComunes").placeholder = "Gastos comunes mensuales ($ ej: 250)";
 
         document.querySelector("button[onclick='calcular()']").innerText = "Comparar";
     }
@@ -129,6 +132,8 @@
      let engancheInput = document.getElementById("enganche").value;
     let taxeMunicipaleInput = document.getElementById("taxeMunicipale").value;
     let taxeScolaireInput = document.getElementById("taxeScolaire").value;
+      let gastosComunesInput = document.getElementById("gastosComunes").value;
+    let gastosComunes = gastosComunesInput === "" ? 0 : parseFloat(gastosComunesInput);
 
     // Validación
     if (renta === "" || precio === "" || interesInput === "" || engancheInput === "") {
@@ -155,7 +160,7 @@ let taxesMensuales = taxesAnuales / 12;
 
    let montoPrestamo = precioNum * (1 - enganche);
    let hipoteca = (montoPrestamo * interes) / (1 - Math.pow(1 + interes, -meses));
-      let costoTotalMensual = hipoteca + taxesMensuales;
+   let costoTotalMensual = hipoteca + taxesMensuales + gastosComunes;   
 
      let titulo = idioma === "fr" ? "Résultat :" : "Resultado:";
 
@@ -189,6 +194,7 @@ document.getElementById("resultado").innerHTML =
     rentaTexto + rentaNum + "<br>" +
     engancheTexto + (enganche * 100) + "%<br><br>" +
     "<br>🏛️ " + (idioma === "fr" ? "Taxes mensuelles : $" : "Impuestos mensuales: $") + taxesMensuales.toFixed(0) +
+    "<br>🏢 " + (idioma === "fr" ? "Frais de copropriété : $" : "Gastos comunes: $") + gastosComunes.toFixed(0) +
     "<br><strong>" + (idioma === "fr" ? "Coût total mensuel : $" : "Costo total mensual: $") + costoTotalMensual.toFixed(0) + "</strong>"
     + mensaje;
     
@@ -198,6 +204,7 @@ document.getElementById("interes").value = "";
 document.getElementById("enganche").value = "";
 document.getElementById("taxeMunicipale").value = "";
 document.getElementById("taxeScolaire").value = "";
+document.getElementById("gastosComunes").value = "";
 }
    actualizarTextos();   
     </script>
