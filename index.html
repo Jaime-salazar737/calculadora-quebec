@@ -83,7 +83,13 @@
  <input type="number" id="enganche" placeholder="% Mise de fonds (ej: 20)" min="0"> 
 <input type="number" id="taxeMunicipale" placeholder="Taxe municipale annuelle ($ ex: 2500)" min="0">
 <input type="number" id="taxeScolaire" placeholder="Taxe scolaire annuelle ($ ex: 300)" min="0">
- <input type="number" id="gastosComunes" placeholder="Frais de copropriété mensuels ($ ex: 250)" min="0">   
+  <label>
+  <input type="checkbox" id="esCondo"> 
+  <span id="labelCondo">Es un condominio</span>
+</label> 
+  <div id="campoCondo" style="display:none;">  
+ <input type="number" id="gastosComunes" placeholder="Frais de copropriété mensuels ($ ex: 250)" min="0">
+   </div>   
     <button onclick="calcular()">Comparer</button>
 
     <div id="resultado"></div>
@@ -101,6 +107,7 @@
         document.querySelector("h1").innerText = "Comparateur : Acheter ou Louer au Québec";
         document.querySelector("p").innerText = "Cet outil vous aide à comparer s’il est plus avantageux d’acheter une propriété ou de continuer à louer.";
 
+        document.getElementById("labelCondo").innerText = "C’est un condominium";
         document.getElementById("renta").placeholder = "Loyer mensuel (ex: 1200)";
         document.getElementById("precio").placeholder = "Prix de la propriété (ex: 300000)";
         document.getElementById("interes").placeholder = "Taux d’intérêt annuel % (ex: 5)";
@@ -108,6 +115,10 @@
         document.getElementById("taxeMunicipale").placeholder = "Taxe municipale annuelle ($ ex: 2500)";
         document.getElementById("taxeScolaire").placeholder = "Taxe scolaire annuelle ($ ex: 300)";
         document.getElementById("gastosComunes").placeholder = "Frais de copropriété mensuels ($ ex: 250)";
+        document.getElementById("esCondo").addEventListener("change", function() {
+    let campo = document.getElementById("campoCondo");
+    campo.style.display = this.checked ? "block" : "none";
+});
 
         document.querySelector("button[onclick='calcular()']").innerText = "Comparer";
 
@@ -123,6 +134,7 @@
         document.getElementById("taxeMunicipale").placeholder = "Impuesto municipal anual ($ ej: 2500)";
         document.getElementById("taxeScolaire").placeholder = "Impuesto escolar anual ($ ej: 300)";
         document.getElementById("gastosComunes").placeholder = "Gastos comunes mensuales ($ ej: 250)";
+        document.getElementById("labelCondo").innerText = "Es un condominio";
 
         document.querySelector("button[onclick='calcular()']").innerText = "Comparar";
     }
@@ -135,7 +147,12 @@
     let taxeMunicipaleInput = document.getElementById("taxeMunicipale").value;
     let taxeScolaireInput = document.getElementById("taxeScolaire").value;
       let gastosComunesInput = document.getElementById("gastosComunes").value;
-    let gastosComunes = gastosComunesInput === "" ? 0 : parseFloat(gastosComunesInput);
+    let esCondo = document.getElementById("esCondo").checked;
+
+let gastosComunes = 0;
+if (esCondo) {
+    gastosComunes = gastosComunesInput === "" ? 0 : parseFloat(gastosComunesInput);
+}
 
     // Validación
     if (renta === "" || precio === "" || interesInput === "" || engancheInput === "") {
