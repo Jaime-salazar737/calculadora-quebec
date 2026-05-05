@@ -91,10 +91,15 @@
  <input type="number" id="gastosComunes" placeholder="Frais de copropriété mensuels ($ ex: 250)" min="0">
    </div>   
     <button onclick="calcular()">Comparer</button>
+    <button onclick="guardarSimulacion()">Guardar simulación</button>
 
     <div id="resultado"></div>
 
+    <h3>Simulaciones guardadas</h3>
+<ul id="listaSimulaciones"></ul>
+
     <script>
+    let ultimoResultado = 0;    
     let idioma = "fr";
         
      function setIdioma(lang) {
@@ -179,7 +184,7 @@ let taxesMensuales = taxesAnuales / 12;
 
    let montoPrestamo = precioNum * (1 - enganche);
    let hipoteca = (montoPrestamo * interes) / (1 - Math.pow(1 + interes, -meses));
-   let costoTotalMensual = hipoteca + taxesMensuales + gastosComunes;
+   let costoTotalMensual = hipoteca + taxesMensuales + gastosComunes; ultimoResultado = costoTotalMensual;
    let diferencia = costoTotalMensual - rentaNum;
 
      let titulo = idioma === "fr" ? "Résultat :" : "Resultado:";
@@ -246,7 +251,18 @@ document.getElementById("taxeMunicipale").value = "";
 document.getElementById("taxeScolaire").value = "";
 document.getElementById("gastosComunes").value = "";
 }
-   actualizarTextos();   
+   actualizarTextos();
+    function guardarSimulacion() {
+    let lista = document.getElementById("listaSimulaciones");
+
+    let item = document.createElement("li");
+
+    item.innerText = 
+        (idioma === "fr" ? "Coût mensuel: $" : "Costo mensual: $") 
+        + ultimoResultado.toFixed(0);
+
+    lista.appendChild(item);
+}    
     </script>
     </div>
 </body>
