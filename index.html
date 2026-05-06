@@ -190,13 +190,13 @@ let montoBase = precioNum * (1 - enganche);
 let montoSeguro = montoBase * seguroSCHL;
  let montoPrestamo = montoBase + montoSeguro;
       
-       let textoSeguro = "";
+ let textoSeguro = "";
 
-if (seguroSCHL > 0) {
+if (montoSeguro > 0) {
     textoSeguro = "<br>🛡️ " + (idioma === "fr"
         ? "Assurance SCHL : $"
         : "Seguro hipotecario (SCHL): $") + montoSeguro.toFixed(0);
-}     
+}      
 let taxeMunicipale = taxeMunicipaleInput === "" ? 0 : parseFloat(taxeMunicipaleInput);
 let taxeScolaire = taxeScolaireInput === "" ? 0 : parseFloat(taxeScolaireInput);
 
@@ -263,7 +263,10 @@ document.getElementById("resultado").innerHTML =
     "<br>🏛️ " + (idioma === "fr" ? "Taxes mensuelles : $" : "Impuestos mensuales: $") + taxesMensuales.toFixed(0) +
     textoSeguro +
     "<br>🏢 " + (idioma === "fr" ? "Frais de copropriété : $" : "Gastos comunes: $") + gastosComunes.toFixed(0) +
-    "<br><div style='font-size:18px; font-weight:bold; margin-top:10px;'>" + (idioma === "fr" ? "Coût total mensuel : $" : "Costo total mensual: $") + costoTotalMensual.toFixed(0) + "</strong>" +
+    "<br><div style='font-size:18px; font-weight:bold; margin-top:10px;'>" +
+(idioma === "fr" ? "Coût total mensuel : $" : "Costo total mensual: $") +
+costoTotalMensual.toFixed(0) +
+"</div>"
     "<br><br><span style='color:" + colorMensaje + "; font-weight:bold;'>" + mensaje + "</span>";
     
 document.getElementById("renta").value = "";
