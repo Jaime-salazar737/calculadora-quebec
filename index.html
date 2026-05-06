@@ -261,6 +261,7 @@ document.getElementById("resultado").innerHTML =
     rentaTexto + rentaNum + "<br>" +
     engancheTexto + (enganche * 100) + "%<br><br>" +
     "<br>🏛️ " + (idioma === "fr" ? "Taxes mensuelles : $" : "Impuestos mensuales: $") + taxesMensuales.toFixed(0) +
+    textoSeguro +
     "<br>🏢 " + (idioma === "fr" ? "Frais de copropriété : $" : "Gastos comunes: $") + gastosComunes.toFixed(0) +
     "<br><div style='font-size:18px; font-weight:bold; margin-top:10px;'>" + (idioma === "fr" ? "Coût total mensuel : $" : "Costo total mensual: $") + costoTotalMensual.toFixed(0) + "</strong>" +
     "<br><br><span style='color:" + colorMensaje + "; font-weight:bold;'>" + mensaje + "</span>";
