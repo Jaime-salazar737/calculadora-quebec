@@ -174,8 +174,29 @@ if (esCondo) {
     let interes = parseFloat(interesInput) / 100 / 12;
     let meses = 25 * 12;
     let enganche = parseFloat(engancheInput) / 100;
-      
+      let seguroSCHL = 0;
 
+if (enganche < 0.20) {
+    if (enganche <= 0.05) {
+        seguroSCHL = 0.04;
+    } else if (enganche <= 0.10) {
+        seguroSCHL = 0.031;
+    } else if (enganche <= 0.15) {
+        seguroSCHL = 0.028;
+    }
+}
+      
+let montoBase = precioNum * (1 - enganche);
+let montoSeguro = montoBase * seguroSCHL;
+ let montoPrestamo = montoBase + montoSeguro;
+      
+       let textoSeguro = "";
+
+if (seguroCMHC > 0) {
+    textoSeguro = "<br>🛡️ " + (idioma === "fr"
+        ? "Assurance SCHL : $"
+        : "Seguro hipotecario (SCHL): $") + montoSeguro.toFixed(0);
+}     
 let taxeMunicipale = taxeMunicipaleInput === "" ? 0 : parseFloat(taxeMunicipaleInput);
 let taxeScolaire = taxeScolaireInput === "" ? 0 : parseFloat(taxeScolaireInput);
 
