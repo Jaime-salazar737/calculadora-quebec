@@ -203,7 +203,7 @@ let taxeScolaire = taxeScolaireInput === "" ? 0 : parseFloat(taxeScolaireInput);
 let taxesAnuales = taxeMunicipale + taxeScolaire;
 let taxesMensuales = taxesAnuales / 12;
 
-   let montoPrestamo = precioNum * (1 - enganche);
+   
    let hipoteca = (montoPrestamo * interes) / (1 - Math.pow(1 + interes, -meses));
    let costoTotalMensual = hipoteca + taxesMensuales + gastosComunes; ultimoResultado = costoTotalMensual;
    let diferencia = costoTotalMensual - rentaNum;
