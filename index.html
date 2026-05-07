@@ -91,11 +91,13 @@
  <input type="number" id="gastosComunes" placeholder="Frais de copropriété mensuels ($ ex: 250)" min="0">
    </div>   
     <button onclick="calcular()">Comparer</button>
-    <button onclick="guardarSimulacion()">Guardar simulación</button>
+    <button id="botonGuardar" onclick="guardarSimulacion()">
+    Sauvegarder simulation
+</button>
 
     <div id="resultado"></div>
 
-    <h3>Simulaciones guardadas</h3>
+   <h3 id="tituloSimulaciones">Simulations sauvegardées</h3> 
 <ul id="listaSimulaciones"></ul>
 
     <script>
@@ -112,6 +114,8 @@
         document.querySelector("h1").innerText = "Comparateur : Acheter ou Louer au Québec";
         document.querySelector("p").innerText = "Cet outil vous aide à comparer s’il est plus avantageux d’acheter une propriété ou de continuer à louer.";
 
+        document.getElementById("tituloSimulaciones").innerText = "Simulations sauvegardées";
+        document.getElementById("botonGuardar").innerText = "Sauvegarder simulation";
         document.getElementById("labelCondo").innerText = "C’est un condominium";
         document.getElementById("renta").placeholder = "Loyer mensuel (ex: 1200)";
         document.getElementById("precio").placeholder = "Prix de la propriété (ex: 300000)";
@@ -132,6 +136,8 @@
         document.querySelector("h1").innerText = "Comparador: Comprar vs Rentar en Québec";
         document.querySelector("p").innerText = "Esta herramienta te ayuda a comparar si te conviene más comprar una propiedad o seguir rentando.";
 
+        document.getElementById("tituloSimulaciones").innerText = "Simulaciones guardadas";
+        document.getElementById("botonGuardar").innerText = "Guardar simulación";
         document.getElementById("renta").placeholder = "Renta mensual (ej: 1200)";
         document.getElementById("precio").placeholder = "Precio de la propiedad (ej: 300000)";
         document.getElementById("interes").placeholder = "Tasa de interés anual % (ej: 5)";
@@ -266,7 +272,7 @@ document.getElementById("resultado").innerHTML =
     "<br><div style='font-size:18px; font-weight:bold; margin-top:10px;'>" +
 (idioma === "fr" ? "Coût total mensuel : $" : "Costo total mensual: $") +
 costoTotalMensual.toFixed(0) +
-"</div>"
+"</div>" +
     "<br><br><span style='color:" + colorMensaje + "; font-weight:bold;'>" + mensaje + "</span>";
     
 document.getElementById("renta").value = "";
