@@ -101,7 +101,8 @@
 <ul id="listaSimulaciones"></ul>
 
     <script>
-    let ultimoResultado = 0;    
+    let ultimoResultado = 0;
+    let ultimoResumen = "";    
     let idioma = "fr";
         
      function setIdioma(lang) {
@@ -260,7 +261,32 @@ if (diferencia > 200) {
         ? "✅ Acheter pourrait être plus avantageux que louer"
         : "✅ Comprar podría ser más conveniente que rentar";
 }
+ultimoResumen =
+    (idioma === "fr"
+        ? "Loyer: $"
+        : "Renta: $")
+    + rentaNum +
 
+    " | " +
+
+    (idioma === "fr"
+        ? "Intérêt: "
+        : "Interés: ")
+    + (interes * 12 * 100).toFixed(1) + "%" +
+
+    " | " +
+
+    (idioma === "fr"
+        ? "Mise de fonds: "
+        : "Enganche: ")
+    + (enganche * 100).toFixed(0) + "%" +
+
+    " | " +
+
+    "Total: $" + costoTotalMensual.toFixed(0) +
+
+    " " + mensaje;
+      
 document.getElementById("resultado").innerHTML =
     "<strong>" + titulo + "</strong><br><br>" +
     pago + hipoteca.toFixed(0) + "<br>" +
@@ -284,14 +310,13 @@ document.getElementById("taxeScolaire").value = "";
 document.getElementById("gastosComunes").value = "";
 }
    actualizarTextos();
-    function guardarSimulacion() {
+function guardarSimulacion() {
+
     let lista = document.getElementById("listaSimulaciones");
 
     let item = document.createElement("li");
 
-    item.innerText = 
-        (idioma === "fr" ? "Coût mensuel: $" : "Costo mensual: $") 
-        + ultimoResultado.toFixed(0);
+    item.innerText = ultimoResumen;
 
     lista.appendChild(item);
 }    
