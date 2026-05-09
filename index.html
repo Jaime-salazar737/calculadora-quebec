@@ -97,7 +97,9 @@
 <button onclick="limpiarSimulaciones()" id="botonLimpiar">
     Effacer simulations
 </button>
-    
+  <button onclick="exportarPDF()" id="botonPDF">
+    Exporter en PDF
+</button>  
     <div id="resultado"></div>
 
    <h3 id="tituloSimulaciones">Simulations sauvegardées</h3> 
@@ -118,6 +120,7 @@
         document.querySelector("h1").innerText = "Comparateur : Acheter ou Louer au Québec";
         document.querySelector("p").innerText = "Cet outil vous aide à comparer s’il est plus avantageux d’acheter une propriété ou de continuer à louer.";
 
+        document.getElementById("botonPDF").innerText = "Exporter en PDF";
         document.getElementById("botonLimpiar").innerText = "Effacer simulations";
         document.getElementById("tituloSimulaciones").innerText = "Simulations sauvegardées";
         document.getElementById("botonGuardar").innerText = "Sauvegarder simulation";
@@ -141,7 +144,8 @@
         document.querySelector("h1").innerText = "Comparador: Comprar vs Rentar en Québec";
         document.querySelector("p").innerText = "Esta herramienta te ayuda a comparar si te conviene más comprar una propiedad o seguir rentando.";
         document.getElementById("botonLimpiar").innerText = "Borrar simulaciones";
-        
+
+        document.getElementById("botonPDF").innerText = "Exportar a PDF";
         document.getElementById("tituloSimulaciones").innerText = "Simulaciones guardadas";
         document.getElementById("botonGuardar").innerText = "Guardar simulación";
         document.getElementById("renta").placeholder = "Renta mensual (ej: 1200)";
@@ -350,8 +354,42 @@ item.style.lineHeight = "1.5";
     document.getElementById("listaSimulaciones").innerHTML = "";
     document.getElementById("resultado").innerHTML = "";
    localStorage.removeItem("simulaciones");   
-}      
+}   
+        function exportarPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    let texto = document.getElementById("listaSimulaciones").innerText;
+
+    if (texto.trim() === "") {
+        alert(idioma === "fr"
+            ? "Aucune simulation à exporter."
+            : "No hay simulaciones para exportar.");
+        return;
+    }
+
+    doc.setFontSize(16);
+    doc.text(
+        idioma === "fr"
+            ? "Simulations sauvegardées"
+            : "Simulaciones guardadas",
+        10,
+        15
+    );
+
+    doc.setFontSize(11);
+
+    let lineas = doc.splitTextToSize(texto, 180);
+    doc.text(lineas, 10, 25);
+
+    doc.save(
+        idioma === "fr"
+            ? "simulations-hypotheque.pdf"
+            : "simulaciones-hipoteca.pdf"
+    );
+}        
     </script>
     </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>    
 </body>
 </html>
