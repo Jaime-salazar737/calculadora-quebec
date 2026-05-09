@@ -155,7 +155,13 @@
 
         document.querySelector("button[onclick='calcular()']").innerText = "Comparar";
     }
-}      
+     let lista = document.getElementById("listaSimulaciones");
+    let simulacionesGuardadas = localStorage.getItem("simulaciones");
+
+    if (simulacionesGuardadas) {
+        lista.innerHTML = simulacionesGuardadas;
+    } 
+    }      
   function calcular() {
     let renta = document.getElementById("renta").value;
     let precio = document.getElementById("precio").value;
@@ -337,11 +343,13 @@ item.style.lineHeight = "1.5";
 } 
 
     lista.appendChild(item);
+    localStorage.setItem("simulaciones", lista.innerHTML);
 } 
   function limpiarSimulaciones() {
 
     document.getElementById("listaSimulaciones").innerHTML = "";
     document.getElementById("resultado").innerHTML = "";
+   localStorage.removeItem("simulaciones");   
 }      
     </script>
     </div>
