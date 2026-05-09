@@ -331,6 +331,10 @@ item.style.fontSize = "18px";
 item.style.lineHeight = "1.5"; 
 
    item.innerHTML = ultimoResumen.replaceAll("|", "<br>"); 
+   if (ultimoResumen.includes("✅")) {
+    item.style.border = "2px solid #28a745";
+    item.style.backgroundColor = "#eaf8ee";
+} 
 
     lista.appendChild(item);
 } 
