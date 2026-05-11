@@ -306,6 +306,14 @@ ultimoResumen =
           + gastosComunes.toFixed(0)
         : "") +
 
+    (montoSeguro > 0
+        ? " | " +
+          (idioma === "fr"
+              ? "Assurance SCHL: $"
+              : "Seguro SCHL: $")
+          + montoSeguro.toFixed(0)
+        : "") +
+    
     " | " +
 
     (idioma === "fr"
