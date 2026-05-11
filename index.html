@@ -281,10 +281,30 @@ if (diferencia > 200) {
         : "✅ Comprar podría ser más conveniente que rentar";
 }
 ultimoResumen =
+     tipoPropiedad +
+    " — $" + precioNum +
+
+    " | " +
+
     (idioma === "fr"
         ? "Loyer: $"
         : "Renta: $")
     + rentaNum +
+
+    " | " +
+
+    (idioma === "fr"
+        ? "Taxes: $"
+        : "Impuestos: $")
+    + taxesMensuales.toFixed(0) +
+
+    (esCondo
+        ? " | " +
+          (idioma === "fr"
+              ? "Frais de copropriété: $"
+              : "Gastos comunes: $")
+          + gastosComunes.toFixed(0)
+        : "") +
 
     " | " +
 
@@ -304,7 +324,9 @@ ultimoResumen =
 
     "Total: $" + costoTotalMensual.toFixed(0) +
 
-    " | " + mensaje;
+    " | " +
+
+    mensaje; 
       
 document.getElementById("resultado").innerHTML =
     "<strong>" + titulo + "</strong><br><br>" +
