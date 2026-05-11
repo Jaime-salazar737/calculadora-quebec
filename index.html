@@ -231,6 +231,12 @@ let taxesMensuales = taxesAnuales / 12;
       ultimoResultado = costoTotalMensual;
    let diferencia = costoTotalMensual - rentaNum;
 
+   let esCondo = document.getElementById("esCondo").checked;
+
+let tipoPropiedad = esCondo
+    ? (idioma === "fr" ? "🏢 Condo" : "🏢 Condo")
+    : (idioma === "fr" ? "🏠 Maison" : "🏠 Casa");   
+
      let titulo = idioma === "fr" ? "Résultat :" : "Resultado:";
 
 let pago = idioma === "fr" 
