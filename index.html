@@ -458,27 +458,7 @@ item.style.lineHeight = "1.5";
             : "simulaciones-hipoteca.pdf"
     );
 }      
-
-    doc.setFontSize(16);
-    doc.text(
-        idioma === "fr"
-            ? "Simulations sauvegardées"
-            : "Simulaciones guardadas",
-        10,
-        15
-    );
-
-    doc.setFontSize(11);
-
-    let lineas = doc.splitTextToSize(texto, 180);
-    doc.text(lineas, 10, 25);
-
-    doc.save(
-        idioma === "fr"
-            ? "simulations-hypotheque.pdf"
-            : "simulaciones-hipoteca.pdf"
-    );
-}        
+      
     </script>
     </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>    
