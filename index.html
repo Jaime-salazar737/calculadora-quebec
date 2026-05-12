@@ -390,18 +390,74 @@ item.style.lineHeight = "1.5";
     document.getElementById("resultado").innerHTML = "";
    localStorage.removeItem("simulaciones");   
 }   
-        function exportarPDF() {
+  function exportarPDF() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
-    let texto = document.getElementById("listaSimulaciones").innerText;
+    let lista = document.getElementById("listaSimulaciones");
 
-    if (texto.trim() === "") {
-        alert(idioma === "fr"
-            ? "Aucune simulation à exporter."
-            : "No hay simulaciones para exportar.");
+    if (lista.innerText.trim() === "") {
+        alert(
+            idioma === "fr"
+                ? "Aucune simulation à exporter."
+                : "No hay simulaciones para exportar."
+        );
         return;
     }
+
+    // Título
+    doc.setFontSize(18);
+    doc.text(
+        idioma === "fr"
+            ? "Simulations sauvegardées"
+            : "Simulaciones guardadas",
+        10,
+        15
+    );
+
+    // Fecha
+    doc.setFontSize(10);
+    let fecha = new Date().toLocaleDateString();
+    doc.text(fecha, 10, 22);
+
+    // Contenido
+    doc.setFontSize(11);
+
+    // Obtener cada tarjeta guardada
+    let tarjetas = lista.children;
+    let y = 32;
+
+    for (let i = 0; i < tarjetas.length; i++) {
+        let texto = tarjetas[i].innerText;
+
+        // Eliminar emojis y símbolos problemáticos
+        texto = texto.replace(/[^\x00-\x7FÀ-ÿ]/g, "");
+
+        // Ajustar ancho del texto
+        let lineas = doc.splitTextToSize(texto, 180);
+
+        // Si se acerca al final de la página, crear nueva
+        if (y + lineas.length * 6 > 270) {
+            doc.addPage();
+            y = 20;
+        }
+
+        // Dibujar líneas
+        doc.text(lineas, 10, y);
+
+        // Separador
+        y += lineas.length * 6 + 5;
+        doc.line(10, y, 200, y);
+        y += 8;
+    }
+
+    // Guardar archivo
+    doc.save(
+        idioma === "fr"
+            ? "simulations-hypotheque.pdf"
+            : "simulaciones-hipoteca.pdf"
+    );
+}      
 
     doc.setFontSize(16);
     doc.text(
