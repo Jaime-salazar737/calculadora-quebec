@@ -309,65 +309,58 @@ if (diferencia > 200) {
         : "✅ Comprar podría ser más conveniente que rentar";
 }
 ultimoResumen =
-     tipoPropiedad +
-    " — $" + precioNum +
+    tipoPropiedad +
+    " | " +
+
+    (idioma === "fr" ? "Prix: $" : "Precio: $") +
+    precioNum.toFixed(0) +
+
+    " | " +
+
+    (idioma === "fr" ? "Loyer: $" : "Renta: $") +
+    rentaNum.toFixed(0) +
+
+    " | " +
+
+    (idioma === "fr" ? "Intérêt: " : "Interés: ") +
+    (interes * 12 * 100).toFixed(2) + "%" +
+
+    " | " +
+
+    (idioma === "fr" ? "Mise de fonds: " : "Enganche: ") +
+    (enganche * 100).toFixed(0) + "%" +
+
+    " | " +
+
+    (idioma === "fr" ? "Taxes mensuelles: $" : "Impuestos mensuales: $") +
+    taxesMensuales.toFixed(0) +
+
+    " | " +
+
+    (idioma === "fr" ? "SCHL: $" : "SCHL: $") +
+    montoSeguro.toFixed(0) +
 
     " | " +
 
     (idioma === "fr"
-        ? "Loyer: $"
-        : "Renta: $")
-    + rentaNum +
+        ? "Taxe de bienvenue: $"
+        : "Impuesto de bienvenida: $") +
+    impuestoBienvenida.toFixed(0) +
 
     " | " +
 
     (idioma === "fr"
-        ? "Taxes: $"
-        : "Impuestos: $")
-    + taxesMensuales.toFixed(0) +
-
-    (esCondo
-        ? " | " +
-          (idioma === "fr"
-              ? "Frais de copropriété: $"
-              : "Gastos comunes: $")
-          + gastosComunes.toFixed(0)
-        : "") +
-
-    (montoSeguro > 0
-        ? " | " +
-          (idioma === "fr"
-              ? "Assurance SCHL: $"
-              : "Seguro SCHL: $")
-          + montoSeguro.toFixed(0)
-        : "") +
-    
-    " | " +
-
-    (idioma === "fr"
-        ? "Intérêt: "
-        : "Interés: ")
-    + (interes * 12 * 100).toFixed(2) + "%" +
+        ? "Consultez votre notaire."
+        : "Consulte con su notario.") +
 
     " | " +
 
-    (idioma === "fr"
-        ? "Mise de fonds: "
-        : "Enganche: ")
-    + (enganche * 100).toFixed(0) + "%" +
+    (idioma === "fr" ? "Total mensuel: $" : "Total mensual: $") +
+    costoTotalMensual.toFixed(0) +
 
     " | " +
 
-(idioma === "fr"
-    ? "Taxe de bienvenue: $"
-    : "Impuesto de bienvenida: $")
-+ impuestoBienvenida.toFixed(0)
-
-    "Total: $" + costoTotalMensual.toFixed(0) +
-
-    " | " +
-
-    mensaje; 
+    mensaje;
       
 document.getElementById("resultado").innerHTML =
     "<strong>" + titulo + "</strong><br><br>" +
