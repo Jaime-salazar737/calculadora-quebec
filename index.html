@@ -232,6 +232,20 @@ let taxesMensuales = taxesAnuales / 12;
    let costoTotalMensual = hipoteca + taxesMensuales + gastosComunes; 
       ultimoResultado = costoTotalMensual;
    let diferencia = costoTotalMensual - rentaNum;
+   let impuestoBienvenida = 0;
+
+if (precioNum <= 52800) {
+    impuestoBienvenida = precioNum * 0.005;
+} else if (precioNum <= 264000) {
+    impuestoBienvenida =
+        (52800 * 0.005) +
+        ((precioNum - 52800) * 0.01);
+} else if (precioNum <= 1000000) {
+    impuestoBienvenida =
+        (52800 * 0.005) +
+        ((264000 - 52800) * 0.01) +
+        ((precioNum - 264000) * 0.015);
+}   
 
    let tipoPropiedad = esCondo
     ? (idioma === "fr" ? "🏢 Condo" : "🏢 Condo")
