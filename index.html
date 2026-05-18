@@ -358,6 +358,11 @@ ultimoResumen =
 
     " | " +
 
+(idioma === "fr"
+    ? "Taxe de bienvenue: $"
+    : "Impuesto de bienvenida: $")
++ impuestoBienvenida.toFixed(0)
+
     "Total: $" + costoTotalMensual.toFixed(0) +
 
     " | " +
