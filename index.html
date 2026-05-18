@@ -215,6 +215,17 @@ let montoSeguro = montoBase * seguroSCHL;
  let montoPrestamo = montoBase + montoSeguro;
       
  let textoSeguro = "";
+ let textoBienvenida =
+    "<br>🏛️ " +
+    (idioma === "fr"
+        ? "Taxe de bienvenue estimée : $"
+        : "Impuesto de bienvenida estimado: $") +
+    impuestoBienvenida.toFixed(0) +
+    "<br><span style='font-size:12px; color:#666;'>"
+    + (idioma === "fr"
+        ? "Consultez votre notaire pour les modalités de paiement."
+        : "Consulte con su notario para las modalidades de pago.")
+    + "</span>";     
 
 if (montoSeguro > 0) {
     textoSeguro = "<br>🛡️ " + (idioma === "fr"
@@ -360,6 +371,7 @@ document.getElementById("resultado").innerHTML =
     engancheTexto + (enganche * 100) + "%<br><br>" +
     "<br>🏛️ " + (idioma === "fr" ? "Taxes mensuelles : $" : "Impuestos mensuales: $") + taxesMensuales.toFixed(0) +
     textoSeguro +
+    textoBienvenida +
     "<br>🏢 " + (idioma === "fr" ? "Frais de copropriété : $" : "Gastos comunes: $") + gastosComunes.toFixed(0) +
     "<br><div style='font-size:18px; font-weight:bold; margin-top:10px;'>" +
 (idioma === "fr" ? "Coût total mensuel : $" : "Costo total mensual: $") +
