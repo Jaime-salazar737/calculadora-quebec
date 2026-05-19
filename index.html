@@ -380,6 +380,22 @@ ultimoResumen =
 
     " | " +
 
+(idioma === "fr"
+    ? "Inclut: hypothèque, taxe municipale"
+    : "Incluye: hipoteca, impuesto municipal")
+
++ (montoSeguro > 0
+    ? ", SCHL"
+    : "")
+
++ (esCondo
+    ? (idioma === "fr"
+        ? ", frais de copropriété"
+        : ", gastos de condominio")
+    : "")
+
+    " | " +
+
     mensaje;
       
 document.getElementById("resultado").innerHTML =
