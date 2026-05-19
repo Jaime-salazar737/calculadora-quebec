@@ -263,6 +263,26 @@ if (precioNum <= 52800) {
     ? (idioma === "fr" ? "🏢 Condo" : "🏢 Condo")
     : (idioma === "fr" ? "🏠 Maison" : "🏠 Casa");   
 
+let detalleTotal =
+    "<br><span style='font-size:12px; color:#666;'>"
+    + (idioma === "fr"
+        ? "Inclut : hypothèque, taxe municipale"
+        : "Incluye: hipoteca, impuesto municipal")
+
+    + (montoSeguro > 0
+        ? (idioma === "fr"
+            ? ", SCHL"
+            : ", SCHL")
+        : "")
+
+    + (esCondo
+        ? (idioma === "fr"
+            ? ", frais de copropriété"
+            : ", gastos de condominio")
+        : "")
+
+    + ".</span>";    
+      
      let titulo = idioma === "fr" ? "Résultat :" : "Resultado:";
 
 let pago = idioma === "fr" 
@@ -376,6 +396,7 @@ document.getElementById("resultado").innerHTML =
 (idioma === "fr" ? "Coût total mensuel : $" : "Costo total mensual: $") +
 costoTotalMensual.toFixed(0) +
 "</div>" +
+    detalleTotal +
     "<br><br><span style='color:" + colorMensaje + "; font-weight:bold;'>" + mensaje + "</span>";
     
 document.getElementById("renta").value = "";
