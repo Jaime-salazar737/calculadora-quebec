@@ -225,9 +225,7 @@ if (montoSeguro > 0) {
 let taxeMunicipale = taxeMunicipaleInput === "" ? 0 : parseFloat(taxeMunicipaleInput);
 let taxeScolaire = taxeScolaireInput === "" ? 0 : parseFloat(taxeScolaireInput);
 
-let taxesAnuales = taxeMunicipale + taxeScolaire;
-let taxesMensuales = taxesAnuales / 12;
-
+let taxesMensuales = taxeMunicipale / 12;
    
    let hipoteca = (montoPrestamo * interes) / (1 - Math.pow(1 + interes, -meses));
    let costoTotalMensual = hipoteca + taxesMensuales + gastosComunes; 
