@@ -350,8 +350,27 @@ ultimoResumen =
 
     " | " +
 
-    (idioma === "fr" ? "Taxes mensuelles: $" : "Impuestos mensuales: $") +
-    taxesMensuales.toFixed(0) +
+    (idioma === "fr"
+    ? "Taxe municipale: $"
+    : "Impuesto municipal: $") +
+
+taxesMensuales.toFixed(0) +
+
+(idioma === "fr"
+    ? "/mois"
+    : "/mes") +
+
+" | " +
+
+(idioma === "fr"
+    ? "Taxe scolaire: $"
+    : "Impuesto escolar: $") +
+
+taxeScolaire.toFixed(0) +
+
+(idioma === "fr"
+    ? "/an"
+    : "/año") +
 
     " | " +
 
