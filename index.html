@@ -402,7 +402,27 @@ document.getElementById("resultado").innerHTML =
     pago + hipoteca.toFixed(0) + "<br>" +
     rentaTexto + rentaNum + "<br>" +
     engancheTexto + (enganche * 100) + "%<br><br>" +
-    "<br>🏛️ " + (idioma === "fr" ? "Taxes mensuelles : $" : "Impuestos mensuales: $") + taxesMensuales.toFixed(0) +
+    "<br>🏛️ " +
+(idioma === "fr"
+    ? "Taxe municipale : $"
+    : "Impuesto municipal: $") +
+taxesMensuales.toFixed(0) +
+
+(idioma === "fr"
+    ? "/mois"
+    : "/mes") +
+
+"<br>📚 " +
+
+(idioma === "fr"
+    ? "Taxe scolaire : $"
+    : "Impuesto escolar: $") +
+
+taxeScolaire.toFixed(0) +
+
+(idioma === "fr"
+    ? "/an"
+    : "/año") +
     textoSeguro +
     textoBienvenida +
     "<br>🏢 " + (idioma === "fr" ? "Frais de copropriété : $" : "Gastos comunes: $") + gastosComunes.toFixed(0) +
