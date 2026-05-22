@@ -78,6 +78,9 @@
 
     <label>Prix de la propriété ($):</label><br>
     <input type="number" id="precio" placeholder="Prix de la propriété (ej: 300000)" min="0">
+    <input type="text"
+       id="direccion"
+       placeholder="Adresse de la propriété (ex: 123 Rue Saint-Jean, Québec)">
 <label>Taux d'intérêt annuel (%):</label><br>
 <input type="number" id="interes" placeholder="Taux d'intérêt annuel % (ej: 4.25)" min="0" step="0.25">
  <input type="number" id="enganche" placeholder="% Mise de fonds (ej: 20)" min="0"> 
@@ -171,6 +174,7 @@
   function calcular() {
     let renta = document.getElementById("renta").value;
     let precio = document.getElementById("precio").value;
+    let direccion = document.getElementById("direccion").value;  
     let interesInput = document.getElementById("interes").value;
      let engancheInput = document.getElementById("enganche").value;
     let taxeMunicipaleInput = document.getElementById("taxeMunicipale").value;
