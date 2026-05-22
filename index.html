@@ -270,16 +270,15 @@ if (precioNum <= 52800) {
     ? (idioma === "fr" ? "🏢 Condo" : "🏢 Condo")
     : (idioma === "fr" ? "🏠 Maison" : "🏠 Casa");   
 
-let detalleTotal =
+   let detalleTotal =
     "<br><span style='font-size:12px; color:#666;'>"
+
     + (idioma === "fr"
         ? "Inclut : hypothèque, taxe municipale"
         : "Incluye: hipoteca, impuesto municipal")
 
     + (montoSeguro > 0
-        ? (idioma === "fr"
-            ? ", SCHL"
-            : ", SCHL")
+        ? ", SCHL"
         : "")
 
     + (esCondo
@@ -288,7 +287,15 @@ let detalleTotal =
             : ", gastos de condominio")
         : "")
 
-    + ".</span>";    
+    + "."
+
+    + "<br>"
+
+    + (idioma === "fr"
+        ? "Amortissement : 25 ans"
+        : "Amortización: 25 años")
+
+    + "</span>";
       
      let titulo = idioma === "fr" ? "Résultat :" : "Resultado:";
 
