@@ -120,14 +120,16 @@
 } 
   function actualizarTextos() {
 
+      document.getElementById("direccion").placeholder =
+        idioma === "fr"
+            ? "Adresse de la propriété (ex: 123 Rue Saint-Jean, Québec)"
+            : "Dirección de la propiedad (ej: 123 Rue Saint-Jean, Québec)";
+
     if (idioma === "fr") {
         document.querySelector("h1").innerText = "Louer ou Acheter Québec";
         document.querySelector("p").innerText = "Cet outil vous aide à comparer s’il est plus avantageux d’acheter une propriété ou de continuer à louer.";
 
-        document.getElementById("direccion").placeholder =
-    idioma === "fr"
-        ? "Adresse de la propriété (ex: 123 Rue Saint-Jean, Québec)"
-        : "Dirección de la propiedad (ej: 123 Rue Saint-Jean, Québec)";
+       
         document.getElementById("botonPDF").innerText = "Exporter en PDF";
         document.getElementById("botonLimpiar").innerText = "Effacer simulations";
         document.getElementById("tituloSimulaciones").innerText = "Simulations sauvegardées";
