@@ -332,6 +332,11 @@ if (diferencia > 200) {
 }
 ultimoResumen =
     tipoPropiedad +
+    
+(direccion !== ""
+        ? " | 📍 " + direccion
+        : "") +
+    
     " | " +
 
     (idioma === "fr" ? "Prix: $" : "Precio: $") +
