@@ -428,7 +428,13 @@ taxeScolaire.toFixed(0) +
 
 (idioma === "fr"
     ? "Inclut: hypothèque, taxe municipale"
-    : "Incluye: hipoteca, impuesto municipal")
+    : "Incluye: hipoteca, impuesto municipal") +
+
+     " | " +
+
+(idioma === "fr"
+    ? "Amortissement: 25 ans"
+    : "Amortización: 25 años")
 
 + (montoSeguro > 0
     ? ", SCHL"
