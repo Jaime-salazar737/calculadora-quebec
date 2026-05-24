@@ -479,6 +479,13 @@ taxeScolaire.toFixed(0) +
 document.getElementById("resultado").innerHTML =
     "<strong>" + titulo + "</strong><br><br>" +
    tipoPropiedad +
+  "<br>💰 " +
+
+(idioma === "fr"
+    ? "Prix de vente: $"
+    : "Precio de venta: $")
+
++ precioNum.toFixed(0) +  
 
 (direccion !== ""
     ? "<br>📍 " + direccion
