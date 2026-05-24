@@ -126,10 +126,22 @@
 } 
   function actualizarTextos() {
 
+      
+
       document.getElementById("direccion").placeholder =
         idioma === "fr"
             ? "Adresse de la propriété (ex: 123 Rue Saint-Jean, Québec)"
             : "Dirección de la propiedad (ej: 123 Rue Saint-Jean, Québec)";
+
+      document.getElementById("evaluationTerrain").placeholder =
+    idioma === "fr"
+        ? "Évaluation terrain ($ ex: 120000)"
+        : "Evaluación terreno ($ ej: 120000)";
+
+document.getElementById("evaluationConstruction").placeholder =
+    idioma === "fr"
+        ? "Évaluation construction ($ ex: 240000)"
+        : "Evaluación construcción ($ ej: 240000)";
 
     if (idioma === "fr") {
         document.querySelector("h1").innerText = "Louer ou Acheter Québec";
@@ -147,15 +159,6 @@
         document.getElementById("enganche").placeholder = "Mise de fonds % (ex: 20)";
         document.getElementById("taxeMunicipale").placeholder = "Taxe municipale annuelle ($ ex: 2500)";
         document.getElementById("taxeScolaire").placeholder = "Taxe scolaire annuelle ($ ex: 300)";
-        document.getElementById("evaluationTerrain").placeholder =
-    idioma === "fr"
-        ? "Évaluation terrain ($ ex: 120000)"
-        : "Evaluación terreno ($ ej: 120000)";
-
-document.getElementById("evaluationConstruction").placeholder =
-    idioma === "fr"
-        ? "Évaluation construction ($ ex: 240000)"
-        : "Evaluación construcción ($ ej: 240000)";
         document.getElementById("gastosComunes").placeholder = "Frais de copropriété mensuels ($ ex: 250)";
         document.getElementById("esCondo").addEventListener("change", function() {
     let campo = document.getElementById("campoCondo");
