@@ -85,6 +85,14 @@
  <input type="number" id="enganche" placeholder="% Mise de fonds (ej: 20)" min="0"> 
 <input type="number" id="taxeMunicipale" placeholder="Taxe municipale annuelle ($ ex: 2500)" min="0">
 <input type="number" id="taxeScolaire" placeholder="Taxe scolaire annuelle ($ ex: 300)" min="0">
+ <input type="number"
+       id="evaluationTerrain"
+       placeholder="Évaluation terrain ($ ex: 120000)"
+       min="0">
+<input type="number"
+       id="evaluationConstruction"
+       placeholder="Évaluation construction ($ ex: 240000)"
+       min="0">   
 <div style="display: flex; justify-content: center; margin-top: 10px;">
     <label style="display: flex; align-items: center; gap: 8px;">
         <input type="checkbox" id="esCondo">
@@ -184,6 +192,14 @@
      let engancheInput = document.getElementById("enganche").value;
     let taxeMunicipaleInput = document.getElementById("taxeMunicipale").value;
     let taxeScolaireInput = document.getElementById("taxeScolaire").value;
+     let evaluationTerrain =
+    parseFloat(document.getElementById("evaluationTerrain").value) || 0;
+
+let evaluationConstruction =
+    parseFloat(document.getElementById("evaluationConstruction").value) || 0;
+
+let evaluationTotale =
+    evaluationTerrain + evaluationConstruction; 
       let gastosComunesInput = document.getElementById("gastosComunes").value;
     let esCondo = document.getElementById("esCondo").checked;
 
