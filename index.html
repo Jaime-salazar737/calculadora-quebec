@@ -483,7 +483,31 @@ document.getElementById("resultado").innerHTML =
 (direccion !== ""
     ? "<br>📍 " + direccion
     : "") +
+"<br><br>📊 " +
 
+(idioma === "fr"
+    ? "Évaluation municipale"
+    : "Evaluación municipal")
+
++ "<br>🌱 " +
+
+(idioma === "fr"
+    ? "Terrain: $"
+    : "Terreno: $")
+
++ evaluationTerrain.toFixed(0)
+
++ "<br>🏠 " +
+
+(idioma === "fr"
+    ? "Construction: $"
+    : "Construcción: $")
+
++ evaluationConstruction.toFixed(0)
+
++ "<br>💎 Total: $" +
+
+evaluationTotale.toFixed(0) +
 "<br><br>" +
     pago + hipoteca.toFixed(0) + "<br>" +
     rentaTexto + rentaNum + "<br>" +
