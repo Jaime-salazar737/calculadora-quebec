@@ -377,10 +377,38 @@ ultimoResumen =
     
     " | " +
 
-    (idioma === "fr" ? "Prix: $" : "Precio: $") +
+    (idioma === "fr" ? "Prix de vente: $" : "Precio de venta: $") +
     precioNum.toFixed(0) +
 
     " | " +
+
+    "📊 " +
+
+(idioma === "fr"
+    ? "Évaluation municipale"
+    : "Evaluación municipal")
+
++ " | 🌱 " +
+
+(idioma === "fr"
+    ? "Terrain: $"
+    : "Terreno: $")
+
++ evaluationTerrain.toFixed(0)
+
++ " | 🏠 " +
+
+(idioma === "fr"
+    ? "Construction: $"
+    : "Construcción: $")
+
++ evaluationConstruction.toFixed(0)
+
++ " | 💎 Total: $" +
+
+evaluationTotale.toFixed(0)
+
++ " | " +
 
     (idioma === "fr" ? "Loyer: $" : "Renta: $") +
     rentaNum.toFixed(0) +
