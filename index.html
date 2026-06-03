@@ -250,11 +250,28 @@ let montoSeguro = montoBase * seguroSCHL;
  let tvqSCHL = montoSeguro * 0.09975;     
  let montoPrestamo = montoBase + montoSeguro;
       
- let textoSeguro = "";
-  
+let textoSeguro = "";
 
 if (montoSeguro > 0) {
-    textoSeguro = "<br>🛡️ " + (idioma === "fr"
+    textoSeguro =
+        "<br>🛡️ " +
+        (idioma === "fr"
+            ? "Assurance SCHL : $"
+            : "Seguro hipotecario (SCHL): $")
+        + montoSeguro.toFixed(0);
+}
+
+let textoTVQSCHL = "";
+
+if (tvqSCHL > 0) {
+    textoTVQSCHL =
+        "<br>💰 " +
+        (idioma === "fr"
+            ? "TVQ sur l'assurance SCHL : $"
+            : "TVQ sobre el seguro SCHL: $")
+        + tvqSCHL.toFixed(0);
+}
+        textoSeguro = "<br>🛡️ " + (idioma === "fr"
         ? "Assurance SCHL : $"
         : "Seguro hipotecario (SCHL): $") + montoSeguro.toFixed(0);
 }      
