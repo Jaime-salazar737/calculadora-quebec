@@ -247,6 +247,7 @@ if (enganche < 0.20) {
       
 let montoBase = precioNum * (1 - enganche);
 let montoSeguro = montoBase * seguroSCHL;
+ let tvqSCHL = montoSeguro * 0.09975;     
  let montoPrestamo = montoBase + montoSeguro;
       
  let textoSeguro = "";
