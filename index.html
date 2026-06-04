@@ -273,10 +273,7 @@ if (tvqSCHL > 0) {
             : "TVQ sobre el seguro SCHL: $")
         + tvqSCHL.toFixed(0);
 }
-        textoSeguro = "<br>🛡️ " + (idioma === "fr"
-        ? "Assurance SCHL : $"
-        : "Seguro hipotecario (SCHL): $") + montoSeguro.toFixed(0);
-}      
+        
 let taxeMunicipale = taxeMunicipaleInput === "" ? 0 : parseFloat(taxeMunicipaleInput);
 let taxeScolaire = taxeScolaireInput === "" ? 0 : parseFloat(taxeScolaireInput);
 
