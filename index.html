@@ -271,7 +271,15 @@ if (tvqSCHL > 0) {
         (idioma === "fr"
             ? "TVQ sur l'assurance SCHL : $"
             : "TVQ sobre el seguro SCHL: $")
-        + tvqSCHL.toFixed(0);
+        + tvqSCHL.toFixed(0)
+
+        + "<br><span style='font-size:12px; color:#666;'>"
+
+        + (idioma === "fr"
+            ? "À payer lors de l'achat."
+            : "A pagar al momento de la compra.")
+
+        + "</span>";
 }
         
 let taxeMunicipale = taxeMunicipaleInput === "" ? 0 : parseFloat(taxeMunicipaleInput);
