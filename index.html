@@ -488,6 +488,20 @@ taxeScolaire.toFixed(0) +
     " | " +
 
     (idioma === "fr"
+    ? "TVQ sur SCHL: $"
+    : "TVQ sobre SCHL: $")
+
++ tvqSCHL.toFixed(0)
+
++ " | " +
+
+(idioma === "fr"
+    ? "À payer lors de l'achat."
+    : "A pagar al momento de la compra.")
+
++ " | " +
+
+    (idioma === "fr"
         ? "Taxe de Bienvenue: $"
         : "Impuesto de Bienvenue: $") +
     impuestoBienvenida.toFixed(0) +
